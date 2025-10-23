@@ -1,0 +1,1 @@
+echo "__pycache__/\n.env\n*.wav\n*.mp3\n*.m4a\nvenv/\n.idea/\n.vscode/\nnode_modules/\nflutter_build/\n*.log" > .gitignore
