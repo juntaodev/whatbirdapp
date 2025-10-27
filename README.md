@@ -6,18 +6,18 @@ An intelligent mobile and web platform that identifies birds from recorded sound
 
 ## 📘 Overview
 
-**WhatBirdApp** enables users to record or upload a short bird sound clip, and the system identifies the most likely bird species.  
-The app combines audio feature extraction (Mel spectrograms), a trained bird song classifier (BirdNET / custom CNN), and a simple, user-friendly mobile interface.
+**WhatBirdApp** lets users record or upload a short bird sound and instantly identify the most likely species.  
+It uses **BirdNET**, a pre-trained deep learning model from the Cornell Lab of Ornithology, integrated through a Python backend and a Flutter mobile frontend.
 
 ---
 
-## 🚀 Features
+## 🚀 Current Status — Phase 0 Complete
 
-- 🎤 Record or upload bird sounds directly from the app  
-- 🧠 Identify bird species using pre-trained ML models  
-- 🌍 Offline or online inference support  
-- 📊 Display confidence scores and additional info (habitat, song pattern, map)  
-- 🧩 Modular architecture (frontend + backend + ML)  
+- ✅ Local ML environment setup (BirdNET-Analyzer)
+- ✅ Successful model download and test inference
+- ✅ Project structure created for `backend`, `frontend`, and `ml`
+- ✅ `.gitignore` configured to exclude large model data
+- ✅ Ready for Phase 1: Backend & ML Integration (FastAPI + BirdNET) 
 
 ---
 
@@ -29,7 +29,7 @@ Frontend (Flutter)
 ↓
 REST API (FastAPI)
 ↓
-ML Model Server (BirdNET or Custom CNN)
+ML Model Server (BirdNET)
 ↓
 Database / Storage (PostgreSQL, MinIO, or Firebase)
 
@@ -44,90 +44,30 @@ Database / Storage (PostgreSQL, MinIO, or Firebase)
 whatbirdapp/
 ├── README.md
 ├── .gitignore
-├── requirements.txt
 ├── backend/
-│   ├── main.py
-│   ├── routes/
-│   ├── services/
-│   └── models/
+│   
 ├── frontend/
-│   ├── lib/
-│   ├── assets/
-│   └── test/
+│  
 ├── ml/
-│   ├── models/
-│   ├── training/
-│   └── utils/
+│  
 └── docs/
-├── roadmap.md
-└── architecture-diagram.png
+
 
 ````
 
 ---
 
-## ⚙️ Setup Instructions
+🧩 Next Step — Phase 1: Backend & ML Integration
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/juntaoliudev/whatbirdapp.git
-cd whatbirdapp
-````
+In the next phase:
 
-### 2️⃣ Set Up Python Backend
+1.Build a FastAPI backend (/identify endpoint)
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate   # or venv\Scripts\activate (Windows)
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
+2.Connect it to ml/infer.py
 
-### 3️⃣ Set Up Flutter Frontend
+3.Serve predictions as JSON
 
-```bash
-cd frontend
-flutter pub get
-flutter run
-```
-
----
-
-## 🧠 Model Integration
-
-The system supports either:
-
-* **BirdNET Model** (pre-trained) — for baseline performance
-* **Custom CNN Model** — trained using spectrograms from open datasets
-
-Model files go under `ml/models/` and are auto-loaded at backend startup.
-
----
-
-## 🧪 Development Workflow
-
-| Branch      | Purpose                      |
-| ----------- | ---------------------------- |
-| `main`      | Stable production-ready code |
-| `dev`       | Active development           |
-| `feature/*` | Feature branches             |
-
-```bash
-git checkout -b feature/audio-upload
-git add .
-git commit -m "feat: add audio upload endpoint"
-git push origin feature/audio-upload
-```
-
----
-
-## ✅ Phase 0 Deliverables
-
-* Git repo initialized and connected to GitHub
-* Backend and frontend skeletons created
-* Initial `README.md` and `.gitignore` added
-* Basic CI checks (optional GitHub Actions) configured
+4.Add Docker and CI/CD support
 
 ---
 

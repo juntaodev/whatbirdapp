@@ -1,1 +1,30 @@
-echo "__pycache__/\n.env\n*.wav\n*.mp3\n*.m4a\nvenv/\n.idea/\n.vscode/\nnode_modules/\nflutter_build/\n*.log" > .gitignore
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.bak
+*.swp
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# ===========================
+# BirdNET & ML Models
+# ===========================
+ml/birdnet-analyzer/results/
+ml/birdnet-analyzer/BirdNET_GLOBAL_*/
+ml/results/
+ml/birdnet-analyzer/venv/
+ml/birdnet-analyzer/__pycache__/
+ml/sample_audio/*.wav
+ml/birdnet-analyzer/example/*.wav
+*.wav
+*.mp3
+*.m4a
