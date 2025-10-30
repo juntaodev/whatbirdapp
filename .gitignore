@@ -1,6 +1,6 @@
-# ===========================
+# ===================================
 # Python
-# ===========================
+# ===================================
 __pycache__/
 *.pyc
 *.pyo
@@ -9,22 +9,83 @@ __pycache__/
 *.tmp
 *.bak
 *.swp
+
+# Virtual Environments
 .venv/
 venv/
 env/
 ENV/
 *.env
 
-# ===========================
-# BirdNET & ML Models
-# ===========================
-ml/birdnet-analyzer/results/
+# Local runtime files
+*.pid
+
+# ===================================
+# BirdNET / ML Models & Outputs
+# ===================================
+
+# Model directories
+ml/models/
 ml/birdnet-analyzer/BirdNET_GLOBAL_*/
-ml/results/
-ml/birdnet-analyzer/venv/
+ml/birdnet-analyzer/models/
+
+# BirdNET analyzer generated stuff
+ml/birdnet-analyzer/results/
 ml/birdnet-analyzer/__pycache__/
-ml/sample_audio/*.wav
-ml/birdnet-analyzer/example/*.wav
+ml/birdnet-analyzer/venv/
+
+# ML output files
+ml/results/
+
+# ===================================
+# Audio files (raw samples, recordings)
+# ===================================
+samples/
+ml/sample_audio/
+ml/birdnet-analyzer/example/
+
+# Media formats
 *.wav
 *.mp3
 *.m4a
+*.flac
+*.ogg
+*.aac
+
+# ===================================
+# Node / Frontend (if applicable)
+# ===================================
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# ===================================
+# IDE / OS / Cache Files
+# ===================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+*.iml
+
+# ===================================
+# Logs / Dumps
+# ===================================
+*.log
+*.out
+*.err
+
+# ===================================
+# Backup files
+# ===================================
+*.old
+*.orig
+*.tmp
+
+# ===================================
+# Misc
+# ===================================
+# Don't ignore README, licenses, scripts, etc.
+!.gitkeep
