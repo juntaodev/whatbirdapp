@@ -18,6 +18,7 @@ async def identify(
     lat: float = Query(..., description="Latitude"),
     lon: float = Query(..., description="Longitude"),
     min_confidence: float = Query(0.1, ge=0.0, le=1.0),
+    top_k: int = Query(3, ge=1, le=50, description="Return top N predictions (default 3)"),
     date: str | None = Query(None, description="ISO date-time (optional)"),
 ):
     # Size guardrail (if client supplies size)
@@ -43,6 +44,10 @@ async def identify(
         preds = predict_from_file(
             file_path=tmp.name, lat=lat, lon=lon, when=when, min_confidence=min_confidence
         )
+
+        # Apply top_k limit
+        preds = preds[:top_k]
+        
         return PredictResponse(predictions=[Detection(**p) for p in preds])
 
     finally:
