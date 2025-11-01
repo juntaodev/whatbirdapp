@@ -47,8 +47,16 @@ async def identify(
 
         # Apply top_k limit
         preds = preds[:top_k]
-        
-        return PredictResponse(predictions=[Detection(**p) for p in preds])
+
+        formatted = []
+        for p in preds:
+            formatted.append({
+                "common_name": p["common_name"],
+                "confidence": p["confidence"],
+                "confidence_percent": f"{p['confidence'] * 100:.2f}%"  # format
+            })
+
+        return PredictResponse(predictions=[Detection(**f) for f in formatted])
 
     finally:
         try:
