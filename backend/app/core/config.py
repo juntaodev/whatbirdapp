@@ -1,19 +1,9 @@
-from pydantic_settings import BaseSettings
+# backend/app/core/config.py
+from pydantic import BaseModel
 from typing import List
 
-class Settings(BaseSettings):
-    APP_NAME: str = "WhatBirdApp API"
-    API_PREFIX: str = "/api"
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:8080",
-        "http://localhost:5173"
-    ]
-    PROJECT_ROOT: str = ".."
-    ML_ROOT: str = "../ml"
-    BIRDNET_ROOT: str = "../ml/birdnet-analyzer"
-
-    class Config:
-        env_file = ".env"
+class Settings(BaseModel):
+    allowed_extensions: List[str] = [".wav", ".mp3", ".m4a", ".flac", ".ogg", ".aac"]
+    max_file_size_mb: int = 50  # basic guardrail
 
 settings = Settings()

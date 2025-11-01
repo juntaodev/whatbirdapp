@@ -1,6 +1,5 @@
 fastapi
 uvicorn[standard]
+pydub
+birdnetlib
 python-multipart
-pydantic
-pydantic-settings
-starlette

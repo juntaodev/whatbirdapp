@@ -1,25 +1,21 @@
+# backend/app/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes.identify import router as identify_router
+from .routes.identify import router as identify_router
 
-app = FastAPI(
-    title="WhatBird Backend API",
-    description="Identify birds from recorded audio using an ML model",
-    version="1.0.0"
-)
+app = FastAPI(title="WhatBirdApp API", version="0.1.0")
 
-# Allow frontend or other clients to connect
+# CORS for local dev (adjust as needed)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or specify your frontend URL
+    allow_origins=["*"],  # tighten later
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Register routes
-app.include_router(identify_router)
+@app.get("/healthz")
+def healthz():
+    return {"status": "ok"}
 
-@app.get("/")
-def root():
-    return {"status": "ok", "message": "WhatBird API running successfully!"}
+app.include_router(identify_router)
